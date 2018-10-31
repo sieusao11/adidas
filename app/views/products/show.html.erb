@@ -1,0 +1,24 @@
+
+<p><strong>Tên Sản Phẩm:</strong><%= @product.productname %></p>
+<p><strong>Đường dẫn hình ảnh:</strong><%= @product.productimagepath %></p>
+<p><strong>Giới tính:</strong><%= @product.gender_id %></p>
+<p><strong>Lứa tuổi:</strong><%= @product.age_id %></p>
+<p><strong>Giá bán:</strong><%= @product.price %></p>
+<p><strong>Giá gốc:</strong><%= @product.originalpride %></p>
+<p><strong>Màu:</strong><%= @product.color_id %></p>
+<p><strong>Màu chi tiết:</strong><%= @product.colordetail %></p>
+<p><strong>Dòng sản phẩm:</strong><%= @product.franchise_id %></p>
+<p><strong>Loại sản phẩm:</strong><%= @product.producttype_id %></p>
+<p><strong>Nhãn sản phẩm:</strong><%= @product.brand_id %></p>
+<p><strong>Danh mục:</strong><%= @product.category_id %></p>
+<p><strong>Môn:</strong><%= @product.sport_id %></p>
+<p><strong>Đường dẫn chi tiết sản phẩm:</strong><%= @product.productdetailspath %></p>
+
+<h2>Các bình luận</h2>
+<%= render @product.comments %>
+
+<h2>Thêm một bình luận:</h2>
+<%= render 'comments/form' %>
+
+<%= link_to 'Sửa', edit_product_path(@product) %> |
+<%= link_to 'Trở lại', products_path %>

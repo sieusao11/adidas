@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  productname: MyText
+  productimagepath: MyText
+  gender_id: MyText
+  age_id: MyText
+  price: 1
+  originalpride: 1
+  color_id: MyText
+  colordetail: MyText
+  franchise_id: MyText
+  producttype_id: MyText
+  brand_id: MyText
+  category_id: MyText
+  sport_id: MyText
+  productdetailspath: MyText
+
+two:
+  productname: MyText
+  productimagepath: MyText
+  gender_id: MyText
+  age_id: MyText
+  price: 1
+  originalpride: 1
+  color_id: MyText
+  colordetail: MyText
+  franchise_id: MyText
+  producttype_id: MyText
+  brand_id: MyText
+  category_id: MyText
+  sport_id: MyText
+  productdetailspath: MyText

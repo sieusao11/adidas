@@ -1,0 +1,51 @@
+
+<h1>Liệt kê các sản phẩm</h1>
+
+<%= link_to 'Sản phẩm mới', new_product_path %>
+<table border="1">
+  <tr>
+    <th>id sản phẩm:</th>
+    <th>Tên Sản Phẩm:</th>
+    <th>Đường dẫn hình ảnh:</th>
+    <th>Giới tính:</th>
+    <th>Lứa tuổi:</th>
+    <th>Giá bán:</th>
+    <th>Giá gốc:</th>
+    <th>Màu:</th>
+    <th>Màu chi tiết:</th>
+    <th>Dòng sản phẩm:</th>
+    <th>Loại sản phẩm:</th>
+    <th>Nhãn sản phẩm:</th>
+    <th>Danh mục:</th>
+    <th>Môn:</th>
+    <th>Đường dẫn chi tiết sản phẩm:</th>
+    <th></th>
+  </tr>
+
+  <% @products.each do |product| %>
+  <tr>
+    <td><%= product.id %></td>
+    <td><%= product.productname %></td>
+    <td><%= product.productimagepath %></td>
+    <td><%= product.gender_id %></td>
+    <td><%= product.age_id %></td>
+    <td><%= product.price %></td>
+    <td><%= product.originalpride %></td>
+    <td><%= product.color_id %></td>
+    <td><%= product.colordetail %></td>
+    <td><%= product.franchise_id %></td>
+    <td><%= product.producttype_id %></td>
+    <td><%= product.brand_id %></td>
+    <td><%= product.category_id %></td>
+    <td><%= product.sport_id %></td>
+    <td><%= product.productdetailspath %></td>
+    <td><%= link_to 'Xem', product_path(product) %></td>
+    <td><%= link_to 'Sửa', edit_product_path(product) %></td>
+    <td><%= link_to 'Xóa', product_path(product),
+              method: :delete,
+              data: { confirm: 'Bạn có chắc không?' } %></td>
+  </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to 'Trở lại', root_path %>
