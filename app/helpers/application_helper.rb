@@ -9,4 +9,10 @@ module ApplicationHelper
       page_title + " – " + base_title
     end
   end
+
+  def image_tag(source, options={})
+    super(source, options) if source.present?
+  end
+  
 end
+

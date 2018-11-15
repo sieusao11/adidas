@@ -15,23 +15,28 @@
 <% end %>
 
 <%= form.label :productname %><%= form.text_area :productname %>
-<%= form.label :productimagepath %><%= form.text_area :productimagepath %>
-<%= form.label :gender_id %><%= form.text_area :gender_id %>
-<%= form.label :age_id %><%= form.text_area :age_id %>
+<%= form.label :avatar %><%= form.file_field :avatar %>
+<%= form.label :images %><%= form.file_field :images, multiple: true %>
 <%= form.label :price %><%= form.text_area :price %>
 <%= form.label :originalpride %><%= form.text_area :originalpride %>
-<%= form.label :color_id %><%= form.text_area :color_id %>
-<%= form.label :colordetail %><%= form.text_area :colordetail %>
-<%= form.label :franchise_id %><%= form.text_area :franchise_id %>
-<%= form.label :producttype_id %><%= form.text_area :producttype_id %>
-<%= form.label :brand_id %><%= form.text_area :brand_id %>
-<%= form.label :category_id %><%= form.text_area :category_id %>
-<%= form.label :sport_id %><%= form.text_area :sport_id %>
-<%= form.label :productdetailspath %><%= form.text_area :productdetailspath %>
+<%= form.label :color_id %>
+<%= form.collection_select :color_id,Color.all, :id, :color_name, prompt: "Choose a color" %>
+<%= form.collection_select :subcolor_id,Subcolor.all, :id, :subcolor_name, prompt: "Choose a subcolor" %>
+<%= form.label :franchise_id %>
+<%= form.collection_select :franchise_id,Franchise.all, :id, :franchise_name, prompt: "Choose a franchise" %>
+<%= form.label :producttype_id %>
+<%= form.collection_select :producttype_id,Producttype.all, :id, :producttype_name, prompt: "Choose a producttype" %>
+<%= form.label :brand_id %>
+<%= form.collection_select :brand_id,Brand.all, :id, :brand_name, prompt: "Choose a brand" %>
+<%= form.label :category_id %>
+<%= form.collection_select :category_id,Category.all, :id, :category_name, prompt: "Choose a category" %>
+<%= form.collection_select :subcategory_id,Subcategory.all, :id, :subcategory_name, prompt: "Choose a subcategory" %>
+<%= form.label :sport_id %>
+<%= form.collection_select :sport_id,Sport.all, :id, :sport_name, prompt: "Choose a sport" %>
+<%= form.label :sku %><%= form.text_area :sku %>
 
 
-<%= form.submit :'Cập Nhật Sản Phẩm' %>
-
+<%= form.submit %>
 <% end %>
 
 <!-- #bin/rails generate model Product 

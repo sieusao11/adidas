@@ -1,0 +1,67 @@
+<h1>Giỏ hàng của bạn</h1>
+<table border="1">
+  <tr>
+    <th>id sản phẩm:</th>
+    <th>Tên Sản Phẩm:</th> 
+    <th>Avatar:</th>  
+    <th>Images:</th>  
+    <th>Giá bán:</th>
+    <th>Giá gốc:</th>
+    <th>Màu - color:</th>
+    <th>Dòng franchise:</th>
+    <th>Loại producttype:</th>
+    <th>Nhãn brand:</th>
+    <th>Danh mục category:</th>
+    <th>Môn sport:</th>
+    <th>sku:</th>
+    <th>Số lượng:</th>
+    
+</tr>
+
+<% @cart.cart_items.each do |cart_item| %>
+<tr>
+
+    <td><%= cart_item.product.id %></td>
+    <td><%= cart_item.product.productname %></td>
+    <td><%= image_tag cart_item.product.avatar, :height => "100",:width=>"100" %></td>
+    <td>
+        <% cart_item.product.images.each do |image| %>
+        <%= image_tag image , :height => "40",:width=>"40" %>
+        <% end %> 
+    </td>
+    <td><%= cart_item.product.price %></td>
+    <td><%= cart_item.product.originalpride %></td>
+    <td>
+        <%= cart_item.product.subcolor_id && cart_item.product.color_id  ? cart_item.product.color.subcolors.find(cart_item.product.subcolor_id).subcolor_name : '' %>
+        <%= !cart_item.product.subcolor_id && cart_item.product.color_id  ? cart_item.product.color.color_name : '' %>  
+        <%= !cart_item.product.subcolor_id && !cart_item.product.color_id  ? '' : '' %> 
+        <%= cart_item.product.subcolor_id && !cart_item.product.color_id  ?  'có subcolor nhưng ko có color' : '' %> 
+        </td>
+
+    <td><%= cart_item.product.franchise_id ? cart_item.product.franchise.franchise_name: '' %></td>
+    <td><%= cart_item.product.producttype_id ? cart_item.product.producttype.producttype_name: '' %></td>
+    <td><%= cart_item.product.brand_id ? cart_item.product.brand.brand_name: '' %></td>
+    <td>
+        <%= cart_item.product.subcategory_id && cart_item.product.category_id  ? cart_item.product.category.subcategories.find(cart_item.product.subcategory_id).subcategory_name : '' %>
+        <%= !cart_item.product.subcategory_id && cart_item.product.category_id  ? cart_item.product.category.category_name : '' %>  
+        <%= !cart_item.product.subcategory_id && !cart_item.product.category_id  ? '' : '' %> 
+        <%= cart_item.product.subcategory_id && !cart_item.product.category_id  ?  'có subcategory nhưng ko có category' : '' %> 
+        </td>
+    <td><%= cart_item.product.sport_id ? cart_item.product.sport.sport_name: '' %></td>
+    <td><%= cart_item.product.sku %></td>
+    <td><%= cart_item.quantity %></td>
+    <td><%= link_to 'Remove', cart_item_url(cart_item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info" %></td>
+    <td><%= link_to 'Xem', product_path(cart_item.product) %></td>
+    <% if current_user.try(:admin?) %>
+    <td><%= link_to 'Sửa', edit_product_path(cart_item.product) %></td>
+    <td><%= link_to 'Xóa', product_path(cart_item.product),
+    method: :delete,
+    data: { confirm: 'Bạn có chắc không?' } %></td>
+    <% end %>
+</tr>
+<% end %>
+</table>
+<br>
+<%= link_to 'Trở lại', root_path %>
+<div class="total-price"><%= link_to 'Next', 
+new_order_path, class: "btn btn-success" %></div>

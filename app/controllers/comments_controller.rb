@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
-	http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
 	def create
 		@product = Product.find(params[:product_id])
 		@comment = @product.comments.create(comment_params)
 		redirect_to product_path(@product)
 	end
 
-	def destroy
+	def show
 		@product = Product.find(params[:product_id])
 		@comment = @product.comments.find(params[:id])
 		@comment.destroy

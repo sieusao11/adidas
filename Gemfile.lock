@@ -33,6 +33,7 @@ GEM
       activemodel (= 5.2.1)
       activesupport (= 5.2.1)
       arel (>= 9.0)
+    activerecord-reset-pk-sequence (0.2.1)
     activestorage (5.2.1)
       actionpack (= 5.2.1)
       activerecord (= 5.2.1)
@@ -83,15 +84,31 @@ GEM
       warden (~> 1.2.3)
     erubi (1.7.1)
     execjs (2.7.0)
+    faraday (0.12.2)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashie (3.5.7)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jwt (1.5.6)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -110,9 +127,25 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multi_xml (0.6.0)
+    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
+    oauth2 (1.4.0)
+      faraday (>= 0.8, < 0.13)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (1.8.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-facebook (5.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth2 (1.5.0)
+      oauth2 (~> 1.1)
+      omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (1.1.3)
     public_suffix (3.0.3)
@@ -208,6 +241,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reset-pk-sequence
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -215,7 +249,9 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   jbuilder (~> 2.5)
+  kaminari
   listen (>= 3.0.5, < 3.2)
+  omniauth-facebook
   pg
   puma (~> 3.11)
   rails (~> 5.2.1)

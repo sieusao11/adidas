@@ -20,3 +20,5 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     end
   end
 end
+
+#rails generate model Product productname:text productimagepath:text

@@ -1,4 +1,4 @@
-<p>Not <%=  current_user ? current_user.email : '' %> ? <a href="/users/sign_out" data-method="delete">Đăng xuất</a></p>
+<p>Not <%=  current_user ? current_user.email : '' %> ? <a href="/users/sign_out" data-method="delete">Log out</a></p>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
