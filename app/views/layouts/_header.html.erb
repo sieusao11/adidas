@@ -83,9 +83,62 @@
 				</a>
 
 				<span class="linedivide1"></span>
-
+				<!-- start wish-->
 				<div class="header-wrapicon2">
 					<img src="/assets/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+					<% totalwish = @wish.wish_items.count %>
+					<span class="header-icons-noti"><%= totalwish %></span>
+
+					<!-- Header cart noti -->
+					<div class="header-cart header-dropdown">
+						<ul class="header-cart-wrapitem">
+							<li>
+								<p class="text-center cart-empty">Your wishlist is empty!</p>
+							</li>
+						</ul>
+					</div>
+					<div class="header-cart header-dropdown"  style="<%= totalwish == 0 ? 'display: none' : '' %>">
+						<ul class="header-cart-wrapitem">
+							<% total = 0 %>
+							<% @wish.wish_items.each do |cart_item| %>
+							<li class="header-cart-item">
+								<div class="header-cart-item-img">
+									<a href="/products/<%= cart_item.product.id %>">
+										<%= image_tag cart_item.product.avatar %>
+									</a>
+								</div>
+								<div class="header-cart-item-txt">
+									<a href="/products/<%= cart_item.product.id %>">
+										<%= cart_item.product.productname %>
+									</a>
+									<span class="header-cart-item-info">
+										<span class="money">$<%= cart_item.product.price %></span>
+									</span>
+									<button type="button" onclick="cart.remove('8250556252202');" title="Remove" class="btn btn-xs">
+										x
+									</button>
+								</div>
+							</li>
+							<% end %>
+						</ul>
+
+						
+
+						<div class="header-cart-buttons">
+							<div class="header-cart-wrapbtn">
+								<!-- Button -->
+								<a href="/wish" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									View Heart
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end wish-->
+				<span class="linedivide1"></span>
+				<!-- start cart-->
+				<div class="header-wrapicon2">
+					<img src="/assets/images/icons/icon-header-03.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
 					<% totalquantity = 0 %>
 							<% @cart.cart_items.each do |cart_item| %>
 							<% totalquantity += cart_item.quantity  %>
@@ -134,7 +187,7 @@
 							<div class="header-cart-wrapbtn">
 								<!-- Button -->
 								<a href="/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-									View Cart
+									View Bag
 								</a>
 							</div>
 
@@ -147,6 +200,7 @@
 						</div>
 					</div>
 				</div>
+				<!-- end cart-->
 			</div>
 		</div>
 	</div>

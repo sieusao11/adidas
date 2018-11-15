@@ -3,11 +3,11 @@ class WishItemsController < ApplicationController
 	before_action :set_wish_item, only:[:destroy]
 
 	def create
-		
+		@product = Product.find(params[:product][:product_id])
 		@wish.add_product(params)
 
 		if @wish.save
-			
+			redirect_to @product
 		else
 			flash[error] = 'Co van de khi tem san pham nay vao tui'
 			

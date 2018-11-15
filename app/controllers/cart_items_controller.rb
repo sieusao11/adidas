@@ -3,11 +3,11 @@ class CartItemsController < ApplicationController
 	before_action :set_cart_item, only:[:destroy]
 
 	def create
-		
+		@product = Product.find(params[:product][:product_id])
 		@cart.add_product(params)
 
 		if @cart.save
-			
+			redirect_to @product
 		else
 			flash[error] = 'Co van de khi tem san pham nay vao tui'
 			
