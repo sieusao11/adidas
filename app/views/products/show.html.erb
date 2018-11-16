@@ -36,13 +36,16 @@
   <%= @product.sku %></p>
   
 <table class="centerTable" cellspacing="1" border="0"> 
+  <% if @product.stock.zero? %>
+            <tr><td>Out of stock</td>
+    <% else %>
 <tr>
   <td>
 <%= select_tag :size, options_for_select((5..11).step(0.5)) , prompt: "SELECT SIZE" %>
     </td>
       <td>
         <%= form_for @product, :url => cart_items_path, :html => { :method => :post } do |f|%>
-        <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
+        <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1, max: 15 %>
       </td>
 </tr>
 <tr>
@@ -53,6 +56,7 @@
       <%= f.submit 'Add to Cart', class: "btn btn-success" %>
 <% end %>
 </td>
+<% end %>
 <td>
 <%= form_for @product, :url => wish_items_path, :html => { :method => :post } do |f|%>
       <%= f.hidden_field :product_id, value: @product.id %>
