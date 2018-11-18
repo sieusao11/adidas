@@ -10,6 +10,7 @@
   max-width: 1270px;
   margin: 0 auto;
   width: 100%;
+  right: 6vw;
 }
 .glass-header-top a {
     padding: 0 10px;
@@ -45,7 +46,7 @@
     overflow: hidden; /* phần tràn: ẩn */
     background-color: black;/* màu-nền: #333 */
     padding-left: 170px;
-    padding-right: 80px;
+    padding-right: 6vw;
 }
 
 .menu li {
@@ -123,7 +124,7 @@ bottom padding is 15px */
 }
 
 .login-icon:after {
-    content: "\1F736";
+    content: "\03A9";
     speak: none;
     font-variant: normal;
     -webkit-font-smoothing: antialiased;
