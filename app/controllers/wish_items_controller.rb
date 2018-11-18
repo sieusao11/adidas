@@ -7,7 +7,7 @@ class WishItemsController < ApplicationController
 		@wish.add_product(params)
 
 		if @wish.save
-			
+			redirect_to request.referrer
 		else
 			flash[error] = 'Co van de khi tem san pham nay vao tui'
 			
@@ -16,14 +16,14 @@ class WishItemsController < ApplicationController
 
 	def destroy
 		@wish_item.destroy
-		redirect_to wish_part
+		redirect_to request.referrer
 	end
 
 
 	private
 
 		def set_wish_item
-			@wish_item = CartItem.find(params[:id])
+			@wish_item = WishItem.find(params[:id])
 		end
 
 		def wish_item_params

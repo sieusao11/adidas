@@ -1,84 +1,117 @@
-<form class="product_search" id="product_search" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-  <input type="search" name="q[productname_cont]" id="q_productname_cont" />
-  <input type="submit" name="commit" value="Search" data-disable-with="Search" />
-</form>
+<% provide(:title, "adidas Online Shop") %>
+<%= render 'layouts/uspbar' %>
+<br>
+<div id="page_info_top">
+<span data-context="plp_wallpaper:off"></span>
+<div class="pageinfotop-wrapper">
+<div id="breadcrumbs">
+    <ul id="product-breadcrumb" class="breadcrumbs clearfix " data-component="product/ProductBreadCrumb" data-scope="breadcrumbs">
+        <li class="back">
+            <a href="#" id="product-back" title="Trở lại"  onclick="goBack()"><!--[if IE 7]><span class="breadcrumb-icon"></span><![endif]-->Trở lại</a>
+        </li>
+    <script>
+function goBack() {
+    window.history.back();
+}
+</script>
+    <script>
+function goBack() {
+    window.history.back();
+}
+</script>
+        
+        
+            <li class="home" data-context="home">
+                
+                <a href="/" itemprop="url" title="Trang chủ">Trang chủ</a>
+            </li>
+            
+        
+        
+            <li data-context="search results">
+                <span class="divider">/</span>Kết quả tìm kiếm của bạn cho: <a href="/search?q=<%= params[:q][:productname_cont] %>" title="<%= params[:q][:productname_cont] %>"><%= params[:q][:productname_cont] %>(<%= @products.count %>)</a>
+            </li>
+    </ul>
+</div>
+<br>
+<div class="page-heading">
+<div class="rbk-page-heading">
+<div class="rbk-heading-wrapper clearfix">
+<div class="search_results_switch_bar clearfix">
+    <h3>
+        <span class="rbk-search-title search-title">&nbsp;kết quả tìm kiếm cho </span>
+        <span class="rbk-search-value search-value"><%= params[:q][:productname_cont] %></span>
+        <span class="search-count">(<%= @products.count %> Sản Phẩm)</span>
+    </h3>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
 
 
-<h1>Kết quả tìm kiếm cho <%= %></h1>
+</div>
+
+<!-- ------------------------------------------------ -->
 
 
-<table border="1">
-  <tr>
-    <th>id sản phẩm:</th>
-    <th>Tên Sản Phẩm:</th> 
-    <th>Avatar:</th>  
-    <th>Images:</th>  
-    <th>Giá bán:</th>
-    <th>Giá gốc:</th>
-    <th>Màu - color:</th>
-    <th>Dòng franchise:</th>
-    <th>Loại producttype:</th>
-    <th>Nhãn brand:</th>
-    <th>Danh mục category:</th>
-    <th>Môn sport:</th>
-    <th>sku:</th>
-    <th>In stock:</th>
-</tr>
+<main>
 
-<% @products.each do |product| %>
-<tr>
+    <div class="pagination">
+<div style="float:left; margin-left:0px">Sắp xếp theo: Tên sản phẩm [A-Z]</div>
+<div style="float:left; margin-left:140px">Xem: 48</div>
+  Trang: 
+        
+    </div>
 
-    <td><%= product.id %></td>
-    <td><%= product.productname %></td>
-    <td>
-        <% if product.stock.zero? %>
-            Out of stock
-    <% else %>
-    <%= image_tag product.avatar, :height => "100",:width=>"100" %>
-        <%= form_for product, :url => cart_items_path, :html => { :method => :post } do |f|%>
-        <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
-      <%= f.hidden_field :product_id, value: product.id %>
-      <%= f.submit 'Add to Cart', class: "btn btn-success" %>
+    <!-- lặp lấy sản phẩm -->
+    <% @products.each do |product| %>
+          <% giaban = product.price %>
+          <% giagoc = product.originalpride %>
+
+    <div style="">
+        <a href="/products/<%= product.id %>">   
+            <div class="product">
+
+              <div class="gl-product-card">
+                <div class="gl-badge gl-badge--small gl-badge--urgent" style="<%=  giagoc ? '' : 'display: none' %> "> -
+                    <% if giagoc %> 
+                    <%= (100-giaban.fdiv(giagoc)*100).to_i %>
+                    <% end %> %
+                </div>
+            </div>
+
+            
+            <img src="<%= url_for(product.avatar) %>" alt="adidas <%= product.productname.titleize %>" onmouseover="this.src='<%= url_for(product.images.second) %>'" onmouseout="this.src='<%= url_for(product.avatar) %>'" title="adidas <%= product.productname.titleize %>" >
+            <h3 style="border-bottom: 1px solid #c8cbcc;height: 3em;line-height: 1em;"><%= product.productname %></h3>
+
+            <%= product.color.color_name %>
+            <br>
+            <h3>
+                <span id="red" style=" <%=  giagoc ? 'color:red' : '' %>">
+
+                    <%= "#{giaban*23000} ₫" %> 
+                </span></span><strike>
+                    <% if giagoc %> 
+                    <%= giagoc =(giagoc*23000).to_i 
+                    "#{giagoc} ₫"
+                    %>
+                    <% end %> 
+                </strike>
+            </span></h3>
+        </div>      
+    </a>    
+</div> 
+
 <% end %>
-<% end %>
-<%= form_for product, :url => wish_items_path, :html => { :method => :post } do |f|%>
-      <%= f.hidden_field :product_id, value: product.id %>
-      <%= f.submit @wish.wish_items.find_by(product_id: product.id) ? 'Remove from Wish' : 'Add to Wish', class: "btn btn-success" %>    
-<% end %>
-    </td>
-    <td>
-        <% product.images.each do |image| %>
-        <%= image_tag image , :height => "50",:width=>"50" %>
-        <% end %> 
-    </td>
-    <td><%= product.price %></td>
-    <td><%= product.originalpride %></td>
-    <td>
-        <%= product.subcolor_id && product.color_id  ? product.color.subcolors.find(product.subcolor_id).subcolor_name : '' %>
-        <%= !product.subcolor_id && product.color_id  ? product.color.color_name : '' %>  
-        <%= !product.subcolor_id && !product.color_id  ? '' : '' %> 
-        <%= product.subcolor_id && !product.color_id  ?  'có subcolor nhưng ko có color' : '' %> 
-    </td>
 
-    <td><%= product.franchise_id ? product.franchise.franchise_name: '' %></td>
-    <td><%= product.producttype_id ? product.producttype.producttype_name: '' %></td>
-    <td><%= product.brand_id ? product.brand.brand_name: '' %></td>
-    <td>
-        <%= product.subcategory_id && product.category_id  ? product.category.subcategories.find(product.subcategory_id).subcategory_name : '' %>
-        <%= !product.subcategory_id && product.category_id  ? product.category.category_name : '' %>  
-        <%= !product.subcategory_id && !product.category_id  ? '' : '' %> 
-        <%= product.subcategory_id && !product.category_id  ?  'có subcategory nhưng ko có category' : '' %> 
-    </td>
-    <td><%= product.sport_id ? product.sport.sport_name: '' %></td>
-    <td><%= product.sku %></td>
-    <td><%= product.stock %></td>
-    <td><%= link_to 'Xem', product_path(product) %></td>
-    <% if current_user.try(:admin?) %>
-    <td><%= link_to 'Sửa', edit_product_path(product) %></td>
-    <td><%= link_to 'Xóa', product_path(product),
-    method: :delete,
-    data: { confirm: 'Bạn có chắc không?' } %></td>
-    <% end %>
-</tr>
-<% end %>
-</table>
+<div class="pagination">
+<div style="float:left; margin-left:0px">Sắp xếp theo: Tên sản phẩm [A-Z]</div>
+<div style="float:left; margin-left:140px">Xem: 48</div>
+  Trang: 
+
+</div>
+
+</main>

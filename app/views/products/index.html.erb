@@ -1,84 +1,152 @@
-
-<h1>Liệt kê các sản phẩm</h1>
-<% if current_user.try(:admin?) %>
-<%= link_to 'Sản phẩm mới', new_product_path %>
-<% end %><br>
-<%= page_entries_info @products %>
-<%= paginate @products %>
-<table border="1">
-  <tr>
-    <th>id sản phẩm:</th>
-    <th>Tên Sản Phẩm:</th> 
-    <th>Avatar:</th>  
-    <th>Images:</th>  
-    <th>Giá bán:</th>
-    <th>Giá gốc:</th>
-    <th>Màu - color:</th>
-    <th>Dòng franchise:</th>
-    <th>Loại producttype:</th>
-    <th>Nhãn brand:</th>
-    <th>Danh mục category:</th>
-    <th>Môn sport:</th>
-    <th>sku:</th>
-    <th>In stock:</th>
-</tr>
-
-<% @products.each do |product| %>
-<tr>
-
-    <td><%= product.id %></td>
-    <td><%= product.productname %></td>
-    <td>
-        <% if product.stock.zero? %>
-            Out of stock
-    <% else %>
-    <%= image_tag product.avatar, :height => "100",:width=>"100" %>
-        <%= form_for product, :url => cart_items_path, :html => { :method => :post } do |f|%>
-        <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
-      <%= f.hidden_field :product_id, value: product.id %>
-      <%= f.submit 'Add to Cart', class: "btn btn-success" %>
-<% end %>
-<% end %>
-<%= form_for product, :url => wish_items_path, :html => { :method => :post } do |f|%>
-      <%= f.hidden_field :product_id, value: product.id %>
-      <%= f.submit @wish.wish_items.find_by(product_id: product.id) ? 'Remove from Wish' : 'Add to Wish', class: "btn btn-success" %>    
-<% end %>
-    </td>
-    <td>
-        <% product.images.each do |image| %>
-        <%= image_tag image , :height => "50",:width=>"50" %>
-        <% end %> 
-    </td>
-    <td><%= product.price %></td>
-    <td><%= product.originalpride %></td>
-    <td>
-        <%= product.subcolor_id && product.color_id  ? product.color.subcolors.find(product.subcolor_id).subcolor_name : '' %>
-        <%= !product.subcolor_id && product.color_id  ? product.color.color_name : '' %>  
-        <%= !product.subcolor_id && !product.color_id  ? '' : '' %> 
-        <%= product.subcolor_id && !product.color_id  ?  'có subcolor nhưng ko có color' : '' %> 
-    </td>
-
-    <td><%= product.franchise_id ? product.franchise.franchise_name: '' %></td>
-    <td><%= product.producttype_id ? product.producttype.producttype_name: '' %></td>
-    <td><%= product.brand_id ? product.brand.brand_name: '' %></td>
-    <td>
-        <%= product.subcategory_id && product.category_id  ? product.category.subcategories.find(product.subcategory_id).subcategory_name : '' %>
-        <%= !product.subcategory_id && product.category_id  ? product.category.category_name : '' %>  
-        <%= !product.subcategory_id && !product.category_id  ? '' : '' %> 
-        <%= product.subcategory_id && !product.category_id  ?  'có subcategory nhưng ko có category' : '' %> 
-    </td>
-    <td><%= product.sport_id ? product.sport.sport_name: '' %></td>
-    <td><%= product.sku %></td>
-    <td><%= product.stock %></td>
-    <td><%= link_to 'Xem', product_path(product) %></td>
-    <% if current_user.try(:admin?) %>
-    <td><%= link_to 'Sửa', edit_product_path(product) %></td>
-    <td><%= link_to 'Xóa', product_path(product),
-    method: :delete,
-    data: { confirm: 'Bạn có chắc không?' } %></td>
-    <% end %>
-</tr>
-<% end %>
-</table>
+<% provide(:title, "adidas All") %>
+<%= render 'layouts/uspbar' %>
 <br>
-<%= link_to 'Trở lại', root_path %>
+<div class="rbk-page-info-top-holder">
+  <div class="pageinfotop-wrapper ">
+    <div id="breadcrumbs">
+      <ul id="product-breadcrumb" class="breadcrumbs clearfix " data-component="product/ProductBreadCrumb" data-scope="breadcrumbs">
+        <li class="back"><%= link_to 'Trở lại', :back, id: "product-back", class: "icon-arrow-left-circle" %></li>   
+        <li class="home" data-context="home">
+            <span class="divider">|</span>
+            <%= link_to 'Trang chủ', root_path %>
+        </li>
+        <!--GENDER AGE FRANCHISE BRAND SPORTS PRODUCTTYPE PARNER CATEGORY MIADIDAS-->
+    </ul>
+</div>
+
+<br>
+<div class="page-heading clearfix">
+    <div class="rbk-page-heading">
+        <div class="rbk-heading-wrapper">
+
+            <h1>
+                thuộc tính sản phẩm
+            </h1>        
+            <p class="count">           
+                (<%= @products.total_count %> Sản Phẩm)      
+            </p>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+<div style="width: 218px;float:left; padding:10px; margin:50px 10px 10px 80px;position: absolute;background:#eceef0;">
+<h3 style="border-bottom: 1px solid #c8cbcc;height: 3em;line-height: 1em;font-weight: bold;font-size: 16px;">LỰA CHỌN CỦA BẠN</h3>
+<br>
+<br>
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;
+    <span style="font-weight: bold;">GIỚI TÍNH</span>:&nbsp;gioitinh</div>';
+<br>
+<br>
+
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;
+    <span style="font-weight: bold;">LỨA TUỔI</span>:&nbsp;luatuoi</div>
+<br>
+<br>
+
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;
+    <span style="font-weight: bold;">DÒNG</span>:&nbsp;dongsp</div>';
+<br>
+<br>
+
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">NHÃN HIỆU</span>:&nbsp;nhanhieu</div>
+<br>
+<br>
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">MÔN</span>:&nbsp;monthethao</div>
+<br>
+<br>
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">LOẠI SẢN PHẨM</span>:&nbsp;dangsp</div>
+<br>
+<br>
+
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">ĐỐI TÁC</span>:&nbsp;goitac</div>';
+<br>
+<br>
+
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">DANH MỤC</span>:&nbsp;danhmuc</div>';
+<br>
+<br>
+
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">MI ADIDAS</span>:&nbsp;mi adidas</div>';
+<br>
+<br>
+
+<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">GIẢM GIÁ</span>:&nbsp;giamgia</div>';
+<br>
+<br>
+
+</div>
+
+<main>
+
+    <div class="pagination">
+        <div style="float:left; margin-left:0px">Xem: 48 </div>
+        <div style="float:left; margin-left:140px"><%= paginate @products %></div>
+        Trang: <%=  @products.current_page %>
+        
+    </div>
+
+    <!-- lặp lấy sản phẩm -->
+    <% @products.each do |product| %>
+          <% giaban = product.price %>
+          <% giagoc = product.originalpride %>
+
+    <div style="">
+        <a href="/products/<%= product.id %>">   
+            <div class="product">
+
+              <div class="gl-product-card">
+                <div class="gl-badge gl-badge--small gl-badge--urgent" style="<%=  giagoc ? '' : 'display: none' %> "> -
+                    <% if giagoc %> 
+                    <%= (100-giaban.fdiv(giagoc)*100).to_i %>
+                    <% end %> %
+                </div>
+            </div>
+
+            
+            <img src="<%= url_for(product.avatar) %>" alt="adidas <%= product.productname.titleize %>" onmouseover="this.src='<%= url_for(product.images.second) %>'" onmouseout="this.src='<%= url_for(product.avatar) %>'" title="adidas <%= product.productname.titleize %>" >
+            <h3 style="border-bottom: 1px solid #c8cbcc;height: 3em;line-height: 1em;"><%= product.productname %></h3>
+
+            <%= product.color.color_name %>
+            <br>
+            <h3>
+                <span id="red" style=" <%=  giagoc ? 'color:red' : '' %>">
+
+                    <%= "#{giaban*23000} ₫" %> 
+                </span></span><strike>
+                    <% if giagoc %> 
+                    <%= giagoc =(giagoc*23000).to_i 
+                    "#{giagoc} ₫"
+                    %>
+                    <% end %> 
+                </strike>
+            </span></h3>
+        </div>      
+    </a>    
+</div> 
+
+<% end %>
+
+<div class="pagination">
+    <div style="float:left; margin-left:0px">Sắp xếp theo: Tên sản phẩm [A-Z]</div>
+    <div style="float:left; margin-left:140px"><%= paginate @products %></div>
+        <%= page_entries_info @products %>
+
+</div>
+
+</main>

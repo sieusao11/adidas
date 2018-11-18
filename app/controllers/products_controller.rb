@@ -3,11 +3,12 @@ class ProductsController < ApplicationController
 	# before_action :authenticate_admin, :except => [:index, :show] 
 	#only: [:new, :edit, :create, :update, :destroy]
 	def index
-		@products = Product.filter(params.slice(:color,:subcolor, :franchise, :producttype, :brand, :category, :subcategory, :sport)).order(:id).page(params[:page]).per(10)
+		@products = Product.filter(params.slice(:color,:subcolor, :franchise, :producttype, :brand, :category, :subcategory, :sport)).order(:id).page(params[:page]).per(48)
 	end
 	
 	def show
 		@product = Product.find(params[:id])
+		@sameproducts = Product.all
 	end
 	
 	def new

@@ -7,7 +7,7 @@ class CartItemsController < ApplicationController
 		@cart.add_product(params)
 
 		if @cart.save
-			
+			redirect_to request.referrer
 		else
 			flash[error] = 'Co van de khi tem san pham nay vao tui'
 			
@@ -16,7 +16,7 @@ class CartItemsController < ApplicationController
 
 	def destroy
 		@cart_item.destroy
-		redirect_to cart_part
+		redirect_to request.referrer
 	end
 
 
