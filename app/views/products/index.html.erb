@@ -41,54 +41,29 @@
 <br>
 <br>
 
+
+
+
+<% params.each do |key, value| %>
+
+<% vi_key = 'GIỚI TÍNH' if key =='subcategory' %>
+<% vi_key = 'LỨA TUỔI' if key =='age' %>
+<% vi_key = 'DÒNG' if key =='franchise' %>
+<% vi_key = 'NHÃN HIỆU' if key =='brand' %>
+<% vi_key = 'MÔN' if key =='sports' %>
+<% vi_key = 'LOẠI SẢN PHẨM' if key =='producttype' %>
+<% vi_key = 'ĐỐI TÁC' if key =='partner' %>
+<% vi_key = 'DANH MỤC' if key =='category' %>
+<% vi_key = 'MI ADIDAS' if key =='miadidas' %>
+<% vi_key = 'GIẢM GIÁ' if key =='sale' %>
+<% if value.present? and key != 'controller' and key != 'action' %>
 <div style="font-size: 13px;float:left">&nbsp;&nbsp;
-    <span style="font-weight: bold;">GIỚI TÍNH</span>:&nbsp;gioitinh</div>';
+    <span style="font-weight: bold;"><%= vi_key %></span>:&nbsp;<%= value %></div>
 <br>
 <br>
+<% end %>
+<% end %>
 
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;
-    <span style="font-weight: bold;">LỨA TUỔI</span>:&nbsp;luatuoi</div>
-<br>
-<br>
-
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;
-    <span style="font-weight: bold;">DÒNG</span>:&nbsp;dongsp</div>';
-<br>
-<br>
-
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">NHÃN HIỆU</span>:&nbsp;nhanhieu</div>
-<br>
-<br>
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">MÔN</span>:&nbsp;monthethao</div>
-<br>
-<br>
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">LOẠI SẢN PHẨM</span>:&nbsp;dangsp</div>
-<br>
-<br>
-
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">ĐỐI TÁC</span>:&nbsp;goitac</div>';
-<br>
-<br>
-
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">DANH MỤC</span>:&nbsp;danhmuc</div>';
-<br>
-<br>
-
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">MI ADIDAS</span>:&nbsp;mi adidas</div>';
-<br>
-<br>
-
-<div style="font-size: 13px;float:left">&nbsp;&nbsp;<span style="font-weight: bold;">GIẢM GIÁ</span>:&nbsp;giamgia</div>';
-<br>
-<br>
 
 </div>
 

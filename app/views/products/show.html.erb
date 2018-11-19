@@ -176,7 +176,7 @@ imageZoom("expandedImg", "myresult");
                                     <div class="wrapper-full-width___1NpMw" data-abtest-atp-1231="control">
                                         <div class="wrapper-inner___I9yBh">
                                             <% @sameproducts.each do |sameproduct| %>
-                                            <% if sameproduct.productname == @product.productname then %>
+                                            <% if sameproduct.productname == @product.productname and sameproduct.subcategory_id == @product.subcategory_id %>
                                             <div class="color_variation___3RVtF active___14GDh">
                                                 <a href=<%= "/products/"+sameproduct.id.to_s %> >
                                                     <div class="image_holder___1vNhb" style="background-image: url(&quot;<%= url_for(sameproduct.avatar) %>&quot;);margin:1px;<% if sameproduct.id == @product.id then %>border-bottom: 2px solid #000;<% end %>">

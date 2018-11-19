@@ -40,7 +40,7 @@
   <div class="menu">
   <ul>
   <li class="dropdown">
-  <%= link_to "NAM", products_path(GENDER: "men"), class: "dropbtn" %>
+  <%= link_to "NAM", products_path(subcategory: "men"), class: "dropbtn" %>
   <div class="dropdown-content">
   <div class="col-container">
 
@@ -135,7 +135,7 @@
   </div>
   </li>
   <li class="dropdown">
-  <%= link_to "NỮ", products_path(GENDER: "women"), class: "dropbtn" %> 
+  <%= link_to "NỮ", products_path(subcategory: "women"), class: "dropbtn" %> 
   <div class="dropdown-content">
   <div class="col-container">
 
@@ -147,7 +147,7 @@
   <a href="/women-sale" style="font-weight: bold; text-transform: uppercase;">GIẢM GIÁ</a>
   <br/>     
   <br/>       
-  <a href="/women-podsystem">P.O.D.System</a>
+  <%= link_to "P.O.D.System", products_path(subcategory: "women",franchise: "podsystem") %> 
   <a href="/women-adicolor">adicolor</a>
   <a href="/women-ultraboost">ultraboost</a>
   <a href="/women-work_out_essentials">Workout Essentials</a>
