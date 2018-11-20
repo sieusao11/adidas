@@ -13,6 +13,9 @@
 </div>
 
 <div class="glass-header-top" style="<%=  current_user ? 'display: none' : '' %>">
+  <%= link_to "USA", locale:"us" %>
+<%= link_to "VIE", locale:"vn" %>
+<div class="menu-spacer___3Gp4L"></div>
   <a href="#">Giúp<!-- --> </a>
   <div class="menu-spacer___3Gp4L"></div>
   <a href="#">theo dõi đơn hàng và trả về<!-- --> </a>
@@ -23,6 +26,9 @@
 </div>
 
 <div class="glass-header-top" style="<%= current_user ? '' : 'display: none' %>">
+  <%= link_to "USA", locale:"us" %>
+<%= link_to "VIE", locale:"vn" %>
+<div class="menu-spacer___3Gp4L"></div>
 <a href="/users/edit">tài khoản của tôi<!-- --> </a>
 <div class="menu-spacer___3Gp4L"></div>
 <a href="/wish">danh sách yêu thích<!-- --> </a>

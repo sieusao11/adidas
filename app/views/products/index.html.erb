@@ -56,7 +56,7 @@
 <% vi_key = 'DANH MỤC' if key =='category' %>
 <% vi_key = 'MI ADIDAS' if key =='miadidas' %>
 <% vi_key = 'GIẢM GIÁ' if key =='sale' %>
-<% if value.present? and key != 'controller' and key != 'action' %>
+<% if value.present? and key != 'controller' and key != 'action' and key  != 'locale' %>
 <div style="font-size: 13px;float:left">&nbsp;&nbsp;
     <span style="font-weight: bold;"><%= vi_key %></span>:&nbsp;<%= value %></div>
 <br>

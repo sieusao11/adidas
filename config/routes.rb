@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	devise_scope :user do  
 		get '/users/sign_out' => 'devise/sessions#destroy'     
 	end
+	scope "(:locale)", locale: /us|vn/ do
 	get 'collections/all'
 	root 'home#index'
 	get 'search', to: 'search#index'
@@ -22,4 +23,5 @@ Rails.application.routes.draw do
 	resources :wish_items
 	get 'wish', to: 'wish#index'
 	resources :orders
+	end
 end

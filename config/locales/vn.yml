@@ -29,5 +29,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+vn:
+  home:
+    index:
+      title: 'KHÔNG BAO GIỜ LÀM BA TRẮNG'
+      summary: 'Thiết kế từ quá khứ và ngày nay đoàn kết trong tất cả các màu trắng.'

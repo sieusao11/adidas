@@ -98,7 +98,7 @@
                                         <% i += 1 %>
                                         <div class="imagecolumn left">
                                             <div class="productimg_container">
-                                                <a href="https://www.adidas.com/us/tubular-shadow-shoes/AQ0886_550.html?forceSelSize=AQ0886_550">
+                                                <a href="/products/<%= wish_item.product.id %>">
                                                     <%= image_tag wish_item.product.avatar, size: "100x100" %>
                                                 </a>
                                             </div>
@@ -115,7 +115,7 @@
                                         <div class="detailscolumn">
                                             <div class="edit_details_container_overlay"></div>
                                             <div class="product" data-id="AQ0886_550">
-                                                <a class="name" href="https://www.adidas.com/us/tubular-shadow-shoes/AQ0886_550.html?forceSelSize=AQ0886_550" title="Tubular Shadow Shoes"><%= wish_item.product.productname %></a>
+                                                <a class="name" href="/products/<%= wish_item.product.id %>"><%= wish_item.product.productname %></a>
 
                                                 <div class="productattributes">
 
@@ -160,15 +160,34 @@
 
                                                 <button class="delete_link true" type="submit" value="Delete from Bag" name="dwfrm_cart_shipments_i0_items_i0_deleteProduct" tabindex="0"><span><%= link_to 'Gỡ bỏ', wish_item_url(wish_item), method: :delete %></span></button>
 
+                                                <br>
+
+                                                <span class="isinstock">Trong Kho &#10003;</span>
 
 
 
 
+
+<div class="wrapper-full-width___1NpMw" data-abtest-atp-1231="control">
+<div class="wrapper-inner___I9yBh">
+    <% @sameproducts.each do |sameproduct| %>
+    <% if sameproduct.productname == wish_item.product.productname and sameproduct.subcategory_id == wish_item.product.subcategory_id %>
+    <div class="color_variation___3RVtF active___14GDh">
+        <a href=<%= "/products/"+sameproduct.id.to_s %> >
+            <div class="image_holder___1vNhb" style="background-image: url(&quot;<%= url_for(sameproduct.avatar) %>&quot;);margin:1px;<% if sameproduct.id == wish_item.product.id then %>border-bottom: 2px solid #000;<% end %>">
+            </div>
+        </a>
+    </div> 
+    <% end %>    
+
+    <% end %>     
+</div>
+</div>
 
                                                 <%= form_for wish_item.product, :url => cart_items_path, :html => { :method => :post } do |f|%>
                                                 <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
                                                 <%= f.hidden_field :product_id, value: wish_item.product.id %>
-                                                <%= f.submit 'Add to Cart', class: "btn btn-success" %>
+                                                <%= f.submit 'Thêm vào Túi', class: "btn btn-success" %>
                                                 <% end %>
 
                                             </div>

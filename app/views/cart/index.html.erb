@@ -280,7 +280,7 @@
         <% soluong = cart_item.quantity %>
         <% tonggiaban += soluong * giaban %> 
         <% giagoc ? tonggiagoc += soluong * giagoc : tonggiagoc += soluong * giaban %>
-        <a href="https://www.adidas.com/us/tubular-shadow-shoes/AQ0886_550.html?forceSelSize=AQ0886_550">
+        <a href="/products/<%= cart_item.product.id %>">
             <%= image_tag cart_item.product.avatar, size: "100x100" %>
         </a>
 </div>
