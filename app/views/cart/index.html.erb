@@ -281,7 +281,7 @@
         <% tonggiaban += soluong * giaban %> 
         <% giagoc ? tonggiagoc += soluong * giagoc : tonggiagoc += soluong * giaban %>
         <a href="/products/<%= cart_item.product.id %>">
-            <%= image_tag cart_item.product.avatar, size: "100x100" %>
+            <%= image_tag cart_item.product.avatar.variant(resize: "120x120"), size: "120x120" %>
         </a>
 </div>
 <div class="remove_pop_up lineitem_remove_pop_up bg"></div>

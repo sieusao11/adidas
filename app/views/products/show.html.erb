@@ -7,28 +7,15 @@
 <%= render 'layouts/uspbar' %>
 
 
-<div data-auto-id="glass-breadcrumbs" class="gl-hidden-s-m breadcrumb___2DviW">
-    <div class="container breadcrumb_container___1L_9x">
-        <ol vocab="http://schema.org" typeof="BreadcrumbList">
-            <li class="back___28hlc gl-body--small gl-no-margin-bottom"><span class="gl-icon icon icon-arrow-left-circle back-icon___9qTR7 icon--size-m"></span><span class="gl-link" onclick="goBack()">Trở lại</span></li>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
-            <li property="itemListElement" typeof="ListItem"><span class="spacer___19Hw0 gl-body--small">|</span><a property="item" typeof="WebPage" href="/" class="gl-link gl-body--small"><span property="name">Trang chủ</span></a>
-                <meta property="position" content="1">
-            </li>
+<div class="rbk-page-info-top-holder">
 
-            <li property="itemListElement" typeof="ListItem"><span class="spacer___19Hw0 gl-body--small">|</span><a property="item" typeof="WebPage" href="/products" class="gl-link gl-body--small"><span property="name">All</span></a>
-                <meta property="position" content="1">
-            </li>
+  <div class="pageinfotop-wrapper ">
+    <%= render 'layouts/breadcrumb' %>
 
-            <li property="itemListElement" typeof="ListItem"><span class="spacer___19Hw0 gl-body--small">|</span><a property="item" typeof="WebPage" href="/products/<%= @product.id %>" class="gl-link gl-body--small"><span property="name"><%= @product.productname %></span></a>
-                <meta property="position" content="1">
-            </li>
-        </ol>
-    </div>
+
+
+
+</div>
 </div>
 
 <!------------------------------------------------------------------------------------------ -->     
@@ -38,7 +25,7 @@
     <script src="/js/zoom.js"></script>
     <div data-auto-id="images_container" class="images_container___3KxTB" onclick="zoom()">
 
-        <%= image_tag @product.avatar, :id => "expandedImg",:class=>"performance-item", :alt => ""+@product.productname+" "+@product.color.color_name.titleize+" "+@product.sku %>
+        <%= image_tag @product.images.first, :id => "expandedImg",:class=>"performance-item", :alt => ""+@product.productname+" "+@product.color.color_name.titleize+" "+@product.sku %>
         <div id="myresult" class="img-zoom-result" style="display:none">
         </div>
 

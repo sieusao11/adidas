@@ -96,10 +96,10 @@
                                     <% @wish.wish_items.each do |wish_item| %>
                                     <div id="shipment_wrapper_0_<%=i%>" class="container clearfix line-item <%= i==0 ? ' first-item':''%>" style="height: 250px!important;overflow: hidden;">
                                         <% i += 1 %>
-                                        <div class="imagecolumn left">
+                                        <div class="imagecolumn left" style="height: 110px;width: 110px">
                                             <div class="productimg_container">
                                                 <a href="/products/<%= wish_item.product.id %>">
-                                                    <%= image_tag wish_item.product.avatar, size: "100x100" %>
+                                                    <%= image_tag wish_item.product.avatar.variant(resize: "110x110"), size: "110x110" %>
                                                 </a>
                                             </div>
                                             <div class="remove_pop_up lineitem_remove_pop_up bg"></div>
@@ -174,7 +174,7 @@
     <% if sameproduct.productname == wish_item.product.productname and sameproduct.subcategory_id == wish_item.product.subcategory_id %>
     <div class="color_variation___3RVtF active___14GDh">
         <a href=<%= "/products/"+sameproduct.id.to_s %> >
-            <div class="image_holder___1vNhb" style="background-image: url(&quot;<%= url_for(sameproduct.avatar) %>&quot;);margin:1px;<% if sameproduct.id == wish_item.product.id then %>border-bottom: 2px solid #000;<% end %>">
+            <div class="image_holder___1vNhb" style="background-image: url(&quot;<%= url_for(sameproduct.avatar.variant(resize: "50x50")) %>&quot;);margin:1px;height:50px;width:50px;<% if sameproduct.id == wish_item.product.id then %>border-bottom: 2px solid #000;<% end %>">
             </div>
         </a>
     </div> 
@@ -4541,7 +4541,7 @@ h2.checkout-title span {
     color: rgb(115, 169, 98);
 }
 .cart_table .co-pt_table .detailscolumn .product .isinstock::after {
-    content: "";
+    
     font-style: normal;
     font-variant: normal;
     font-weight: normal;

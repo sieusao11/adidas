@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .rbk-page-info-top-holder {
+ 	padding: 10px 5vw;
+ }

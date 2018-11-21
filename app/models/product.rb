@@ -23,6 +23,7 @@ class Product < ApplicationRecord
 	scope :subcategory, -> (status) { where subcategory_id: status }
 	scope :sport, -> (status) { where sport_id: status }
 	has_one_attached :avatar
+	has_one_attached :hover
 	has_many_attached :images
 
 	# belongs_to :cart_item

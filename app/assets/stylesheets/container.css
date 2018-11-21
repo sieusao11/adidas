@@ -2,7 +2,7 @@ form.container {
     position: relative!important; /* vịtrí: tương đối - tuyệtđối:absolute- cố định:fixed*/
     height: 92px!important;
     width: 100%!important;
-    background-color:black!important;  
+    background-color:#ede734!important;  
     display: table!important;
     margin: 0!important;
     padding: 0!important;
@@ -10,22 +10,19 @@ form.container {
 }
 
 .footer_newletter {
-    font-weight: 600!important;
-    font-style: normal!important;
-    text-transform: uppercase!important;
-    font-size: 26px!important;
-    line-height: 24px!important;
-    letter-spacing: 1.5px!important;
+    color: black!important;
     display: table-cell!important;
-    color: white!important;
+    font-size: 28px!important;
+    font-style: normal!important;
+    font-weight: 600!important;
+    letter-spacing: 1.5px!important;
+    line-height: 24px!important;
     text-align: center!important;
+    text-transform: uppercase!important;
     vertical-align: middle!important; 
-    font-size: 20px!important;
 }
-
-
 span.footer_discount_color{
     
-    color: #73a962!important;
+    color: #0a5!important;
 }
 

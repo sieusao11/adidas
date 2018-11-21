@@ -63,9 +63,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pg'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'activerecord-reset-pk-sequence'
 gem 'kaminari'
-gem 'omniauth-facebook'
 gem 'ransack'
 gem 'bootstrap-sass', '3.3.7'
 gem 'rails-i18n'
+gem 'breadcrumbs_on_rails'
+gem 'mini_magick'
