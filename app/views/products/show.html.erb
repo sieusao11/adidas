@@ -253,11 +253,11 @@ imageZoom("expandedImg", "myresult");
 
 
 
-    <%= f.button 'THÊM VÀO TÚI', class: "gl-cta btn-bag gl-cta--primary gl-cta--full-width" %>
+    <%= f.button 'THÊM VÀO TÚI', class: "gl-cta btn-bag gl-cta--primary gl-cta--full-width"  %>
 
     <% end %>
 
-    <%= form_for @product, :url => wish_items_path, :html => {:action=>"create", :method => :post } do |f|%>
+    <%= form_for @product, :url => wish_items_path, remote: true, :html => {:action=>"create", :method => :post }, :authenticity_token => true do |f|%>
     <%= f.hidden_field :product_id, value: @product.id, style: "display:none;" %>
 
 

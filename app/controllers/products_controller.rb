@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 	# before_action :authenticate_user!, :except => [:index, :show]
 	# before_action :authenticate_admin, :except => [:index, :show] 
 	#only: [:new, :edit, :create, :update, :destroy]
+	
 	def index
 		@products = Product.filter(params.slice(:color,:subcolor, :franchise, :producttype, :brand, :category, :subcategory, :sport)).order(:id).page(params[:page]).per(48)
 		params.each do |key, value|  

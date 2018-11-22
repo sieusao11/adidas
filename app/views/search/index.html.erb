@@ -84,7 +84,7 @@ function goBack() {
             </div>
 
             
-            <img src="<%= url_for(product.avatar) %>" alt="adidas <%= product.productname.titleize %>" onmouseover="this.src='<%= url_for(product.images.second) %>'" onmouseout="this.src='<%= url_for(product.avatar) %>'" title="adidas <%= product.productname.titleize %>" >
+            <img src="<%= url_for(product.avatar.variant(resize: "230x230")) %>" alt="adidas <%= product.productname.titleize %>" onmouseover="this.src='<%= url_for(product.hover.variant(resize: "230x230")) %>'" onmouseout="this.src='<%= url_for(product.avatar.variant(resize: "230x230")) %>'" title="adidas <%= product.productname.titleize %>" >
             <h3 style="border-bottom: 1px solid #c8cbcc;height: 3em;line-height: 1em;"><%= product.productname %></h3>
 
             <%= product.color.color_name %>
