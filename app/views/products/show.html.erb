@@ -22,10 +22,10 @@
 
 <div data-auto-id="glass-image-viewer" class="glass_image_viewer___3pD5T" style="">
 
-    <script src="/js/zoom.js"></script>
-    <div data-auto-id="images_container" class="images_container___3KxTB" onclick="zoom()">
 
-        <%= image_tag @product.images.first, :id => "expandedImg",:class=>"performance-item", :alt => ""+@product.productname+" "+@product.color.color_name.titleize+" "+@product.sku %>
+    <div data-auto-id="images_container" class="images_container___3KxTB" onclick="zoom()" style="margin-left: -250px">
+
+        <%= image_tag @product.images.first,onclick: "changecursor()", :id => "expandedImg",:class=>"performance-item", :alt => ""+@product.productname+" "+@product.color.color_name.titleize+" "+@product.sku %>
         <div id="myresult" class="img-zoom-result" style="display:none">
         </div>
 
@@ -39,6 +39,8 @@
                 document.getElementById("expandedImg").setAttribute("onclick", "changecursor()");
             }
         </script>
+
+
 
         <script>
             function zoom() {
